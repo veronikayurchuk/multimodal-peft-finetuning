@@ -2,6 +2,62 @@
 
 This project demonstrates how to fine-tune Google's PaliGemma (a powerful multimodal vision-language model) to extract structured JSON data from receipt images. We utilize QLoRA (Quantized Low-Rank Adaptation) and Supervised Fine-Tuning (SFT) techniques to efficiently adapt the model for this specific task.
 
+## 💡 Before & After: The Power of Fine-tuning
+
+<table width="100%">
+  <tr>
+    <th width="50%" align="center">Before Fine-tuning</th>
+    <th width="50%" align="center">After Fine-tuning</th>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="./sample_image.png" width="350px" alt="Receipt Example"/></td>
+    <td width="50%" align="center"><img src="./sample_image.png" width="350px" alt="Receipt Example"/></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Original Model Output:</b><br>"'receipt'"</td>
+    <td width="50%"><b>Fine-tuned Model Output:</b><br>
+<pre>
+{
+  "menu": [
+    {
+      "nm": "PEARL CHOCO TEA",
+      "cnt": "1",
+      "price": "17.000"
+    },
+    {
+      "nm": "GREEN TEA LYCHEE",
+      "cnt": "1", 
+      "price": "18.000"
+    },
+    {
+      "nm": "TOFU SEA",
+      "cnt": "2",
+      "price": "0"
+    },
+    {
+      "nm": "CAP KOK",
+      "cnt": "2",
+      "price": "0"
+    }
+  ],
+  "sub_total": {
+    "subtotal_price": "35.000"
+  },
+  "total": {
+    "total_price": "35.000",
+    "cashprice": "100.000",
+    "changeprice": "65.000"
+  }
+}
+</pre>
+    </td>
+  </tr>
+</table>
+
+> **Note:** The example above shows results from the basic model trained in the Foundation Tutorial. The Advanced Tutorial includes systematic ablation studies that yield even better performance with optimized hyperparameters.
+
+This dramatic improvement transforms PaliGemma from a general image understanding model into a specialized tool for extracting structured data from receipts, all while requiring minimal computational resources.
+
 ## 📚 Notebook Overview
 
 This project includes two comprehensive tutorials, each serving different learning objectives:
